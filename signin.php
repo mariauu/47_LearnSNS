@@ -1,19 +1,7 @@
 <?php
 session_start();
 require('dbconnect.php');
-//ログインしていない状態でのアクセス禁止
-
-
-
-//エラーを格納する配列
 $errors = [];
-
-// echo "<pre>";
-// var_dump($_SESSION['47_LearnSNS']);
-// echo "</pre>";
-
-
-
 
 if (!empty($_POST)) {
     $email = $_POST['input_email'];
@@ -39,7 +27,6 @@ if (!empty($_POST)) {
 
         //SELECT`email` FROM`users` LIMIT 1
 
-
             //DBから取得した値を$recordに入れる
         //$recordには連想配列が入ってくる
         //値がない場合にはfalseが入る
@@ -57,12 +44,7 @@ if (!empty($_POST)) {
                $_SESSION['47_LearnSNS']['id'] = $record['id'];
 
                //3-2, timeline.phpに遷移
-               header('Location: timeline.php');
-               exit;
-
-             }else{
-                //認証失敗
-                $errors['signin'] = 'failed';
+               echo 'aaaa';
              }
 
     //3.パスワードが一致した場合、サインイン処理
@@ -72,9 +54,9 @@ if (!empty($_POST)) {
 
 }
 
-//echo "<pre>";
-//var_dump($errors);
-//echo "</pre>";
+echo "<pre>";
+var_dump($errors);
+echo "</pre>";
 
 
 ?>
@@ -84,10 +66,11 @@ if (!empty($_POST)) {
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 thumbnail">
                 <h2 class="text-center content_header">サインイン</h2>
-                <?php if(isset($errors['signin']) && $errors['signin'] == 'failed'): ?>
-                <p class="text-danger">サインインに失敗しました</p>
-                    <?php endif;?>
+                <?php if(isset($errors['signin'])) && $errors['signin'] == 'failed'):
 
+                ?>
+                <p class="form-group">サインインに失敗しました</p>
+                    <?php endif;?>
                 <form method="POST" action="signin.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="email">メールアドレス</label>
