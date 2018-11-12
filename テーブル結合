@@ -1,0 +1,98 @@
+テーブル結合
+    「主キー」と「外部キー」を結合条件に利用して、
+    複数のテーブルから一度にデータを取得する
+
+外部結合
+SELECT * FROM `テーブル1` LEFT JOIN `テーブル2`ON 条件
+
+SELECT *FROM `テーブル1` RIGHT JOIN `テーブル2`ON 条件
+
+SELECT * FROM `feeds` LEFT JOIN `users` ON `feeds`.`user_id` = `users`.`id`;
+
+LEFT JOIN
+    左のテーブル1のレコード全て表示、右のテーブル2を紐付ける
+    テーブル2に一致するレコードがなければNULLになる
+
+RIGHT JOIN
+    LEFT JOINの逆
+
+内部結合
+SELECT * FROM `テーブル1` JOIN `テーブル2` ON 条件
+
+
+結合条件
+  ON 条件
+  条件には、どのようなテーブルのどのカラムが紐付くかははっきりさせること
+  `feeds`.`user_id` = `users`.`id`
+  *単にidだけではどのテーブルのものかわからない
+
+カラムの一部読み込み出し
+SELECT 
+　`テーブル1`.*,
+  `テーブル2`.`カラム名1`,
+  `テーブル2`.`カラム名2`
+  FROM `テーブル1` LEFT JOIN `テーブル2` ON 条件s
+
+  //宿題
+  //投稿情報全てとユーザーの名前、ユーザーの画像名を取得するSQLを考えてきてください
+
+  SELECT
+    `feeds`.*, `users`.`name`,`users`.`img_name` 
+  FROM 
+    `feeds` 
+  LEFT JOIN `users`
+  ON `feeds`.`user_id` = `users`.`id`;
+
+
+
+  SELECT FROM `feeds`
+  LEFT JOIN `users`
+  ON `feeds`.`user_id` = `users`.`id`;
+
+
+テーブルのリネーム
+  テーブル名 AS 省略した名前
+    
+  SELECT
+    `f`.*, `u`.`name`,`u`.`img_name`
+
+    //↓feedsを「f」ってうゆう表記で書くことの宣言。
+  FROM`feeds` AS `f`
+  LEFT JOIN `users` AS `u`
+  ON`f`.`user_id` = `u`.`id`;
+
+テーブルを指定する箇所でASを付与
+カラムを指定する箇所で省略が利用可能
+
+
+順番の指定
+  ORDER BY カラム名
+  指定したカラム名でソートができる
+  カラム名の後ろでDESC(降順)、ASC(昇順)を指定可能
+  省略可能、省略した場合ASCになる
+
+  SQLの例
+   SELECT
+    `f`.*, `u`.`name`,`u`.`img_name`
+  FROM`feeds` AS `f`
+  LEFT JOIN `users` AS `u`
+  ON`f`.`user_id` = `u`.`id`
+  OREDER BY`created` DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
