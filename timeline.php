@@ -55,7 +55,7 @@ if (!empty($_POST)) {
 $sql = 'SELECT `f`.*,`u`.`name`,`u`.`img_name`FROM`feeds` AS`f`
 LEFT JOIN`users` AS `u`
 ON`f`.`user_id` = `u`.`id`
-ORDER BY`created` DESC';
+ORDER BY`f`.`created` DESC';
 
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
@@ -144,7 +144,7 @@ while (true) {
                             <span class="comment-count">コメント数：5</span>
 
                             <?php if ($signin_user['id'] == $feed['user_id']): ?>
-                                <a href="edit.php" class="btn btn-success btn-xs">編集</a>
+                                <a href="edit.php?feed_id=<?php echo $feed['id']; ?>" class="btn btn-success btn-xs">編集</a>
                                 <a onclick="return confirm('ほんまに消すん？');" href="delete.php?feed_id=<?php echo $feed['id'];?> "class="btn btn-danger btn-xs">削除</a>
                             <?php endif;?>
                                 </div>
