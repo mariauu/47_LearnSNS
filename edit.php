@@ -13,8 +13,9 @@ $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
 //エラー内容を保持する
 // $errors = [];
 
-if (isset($_GET['feed_id'])) {
+if (isset($_GET['feed_id'])){
     # code...
+
 
 //1.GETパラメータを取得
 $feed_id = $_GET['feed_id'];
