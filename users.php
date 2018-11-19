@@ -1,4 +1,5 @@
-p<?php
+<?php
+
 
 ?>
 <?php include('layouts/header.php'); ?>
@@ -9,18 +10,19 @@ p<?php
             <div class="col-xs-12">
                 <div class="thumbnail">
                     <div class="row">
-                        <div class="col-xs-2">
-                            <img src="user_profile_img/misae.png" width="80px">
+                        <div class="col-xs-1">
+                            <img src="user_profile_img/<?php echo $signin_user['img_name']; ?>" width="80px">
                         </div>
                         <div class="col-xs-10">
-                            名前 <a href="profile.php" style="color: #7f7f7f;">野原みさえ</a>
+                            名前 <a href="profile.php" style="color: #7f7f7f;">
+                                <?php echo $feed['name'];?></a>
                             <br>
-                            2018-10-14 12:34:56からメンバー
+                            
                         </div>
                     </div>
                     <div class="row feed_sub">
                         <div class="col-xs-12">
-                            <span class="comment_count">つぶやき数：10</span>
+                            <span class="like-count">つぶやき数：10</span>
                         </div>
                     </div>
                 </div>
