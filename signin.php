@@ -44,7 +44,14 @@ if (!empty($_POST)) {
                $_SESSION['47_LearnSNS']['id'] = $record['id'];
 
                //3-2, timeline.phpに遷移
-               echo 'aaaa';
+               // echo 'aaaa';
+               header('Location:timeline.php');
+               exit();
+             }
+
+
+             else{
+                $errors['signin'] = 'failed';
              }
 
     //3.パスワードが一致した場合、サインイン処理
@@ -66,7 +73,7 @@ echo "</pre>";
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 thumbnail">
                 <h2 class="text-center content_header">サインイン</h2>
-                <?php if(isset($errors['signin'])) && $errors['signin'] == 'failed'):
+                <?php if(isset($errors['signin']) && $errors['signin'] == 'failed'):
 
                 ?>
                 <p class="form-group">サインインに失敗しました</p>
